@@ -29,7 +29,7 @@ class CampoCargaPontual(Scene):
         # Cria as setas para carga positiva
         setas_saindo = VGroup()
         
-        # Aqui podemos usar um loop de 0 a 360 graus para cobrir a carga de setas
+        #  Loop de 0 a 360 graus para cobrir a carga de setas
         for ang in range(0, 360, 30):
             rad = ang * DEGREES # converte para radianos
             inicio = np.array([0.6 * np.cos(rad), 0.6 * np.sin(rad), 0])
@@ -37,7 +37,7 @@ class CampoCargaPontual(Scene):
             seta = Arrow(start=inicio, end=fim, color=YELLOW, buff=0)
             setas_saindo.add(seta)
 
-        # Faz a animação das setas aparecerem em conjunto a partir da carga
+        # Animação das setas aparecendo em conjunto a partir da carga
         self.play(*[GrowArrow(s) for s in setas_saindo], run_time=2)
         self.wait(2)
 
@@ -64,6 +64,6 @@ class CampoCargaPontual(Scene):
         #Fade entre a carga positiva com a negativa
         self.play(Transform(grupo_pos, grupo_neg), Write(texto_neg))
         
-        #Aparece as setas da carga negativa
+        #Animaçao das setas da carga negativa
         self.play(*[GrowArrow(s) for s in setas_entrando], run_time=2)
         self.wait(3)
